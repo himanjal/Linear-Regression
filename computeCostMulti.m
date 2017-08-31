@@ -13,6 +13,22 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
+H = zeros(m,1);
+index = 1;
+for i = transpose(X)
+	H(index) = transpose(theta)* i;
+	index = index + 1;
+endfor
+
+cost_matrix = H-y;
+total_Cost = 0;
+index = 0;
+do
+	index++;
+	total_Cost = total_Cost+(cost_matrix(index)*cost_matrix(index));
+until(index == m)
+
+J = total_Cost/(2*m);
 
 
 

@@ -17,7 +17,17 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
+    H = zeros(m,1);
+    index = 1;
+    for i = transpose(X)
+        H(index) = transpose(theta)* i;
+        index = index + 1;
+    endfor
 
+    cost_matrix = H-y;
+
+    for index = 1:size(theta,1)
+        theta(index) = theta(index) - (alpha*(transpose(X(:,index))*cost_matrix))/m;
 
 
 
